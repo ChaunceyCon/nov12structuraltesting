@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
 export function RevealAnswer(): React.JSX.Element {
-    const [answerVisible, setanswerVisible] = useState<boolean>(false);
+    const [answerVisible, setanswerVisible, toggleVisible, settoggleVisible] =
+        useState<boolean>(false);
     // const [answerHintVisible, setanswerHintVisible] = useState<boolean>(false);
 
     function toggleVisibility() {
@@ -21,6 +22,24 @@ export function RevealAnswer(): React.JSX.Element {
                 <Button onClick={toggleVisibility}>
                     Toggle Answer Visibility
                 </Button>
+            </span>
+        </div>
+    );
+    // Toggle hint in work
+    function ToggleHint() {
+        if (toggleVisible) {
+            settoggleVisible(false);
+        } else {
+            settoggleVisible(true);
+        }
+    }
+
+    return (
+        <div>
+            Answer: {toggleVisible && 21}
+            {/* answerHintVisible ? "the hint" : "" */}
+            <span>
+                <Button onClick={ToggleHint}>Toggle Answer Visibility</Button>
             </span>
         </div>
     );
